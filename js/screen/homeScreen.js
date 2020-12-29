@@ -16,7 +16,6 @@ export default class HomeScreen {
     this.bird = bird;
     this.flow = flow;
     this.wallpaper = wallpaper;
-
   }
 
   draw() {

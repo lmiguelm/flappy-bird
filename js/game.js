@@ -3,6 +3,7 @@ import Floor from './floor.js';
 import Wallpaper from './wallpaper.js';
 
 import HomeScreen from './screen/homeScreen.js';
+import GameScreen from './screen/gameScreen.js';
 
 export default class Game {
   
@@ -20,17 +21,23 @@ export default class Game {
     }
 
     this.screen = {
-      HomeScreen: new HomeScreen(this.source, this.context, this.canvas, this.bird, this.floor, this.wallpaper)
+      HOME_SCREEN: new HomeScreen(this.source, this.context, this.canvas, this.bird, this.floor, this.wallpaper),
+      GAME_SCREEN: new GameScreen(this.bird, this.floor, this.wallpaper),
     }
-
-    this.screenActive = this.screen.HomeScreen;
+    this.screenActive = this.screen.HOME_SCREEN;
   };
 
   renderScreen() {  
     this.context.fillStyle = '#70c5ce';
     this.context.fillRect(0,0, 320, 480);
 
-    this.screen.HomeScreen.render();
+    this.screenActive.render();
+
+    if(this.screenActive == this.screen.GAME_SCREEN) {
+      if(!this.checkColisionFloor()) {
+        this.bird.fall();
+      }
+    } 
   };
 
   checkColisionFloor() {
@@ -38,18 +45,18 @@ export default class Game {
     const floor = this.floor.y;
 
     if(bird >= floor) {
-      // this.audio.fail.play();
+      this.audio.fail.play();
       return true;
     }
     return false;
   }
 
   click() {
-    this.bird.jumping();
-// 
-    // this.screenActive = 'playing';
-
-    console.log(this.screenActive);
+    if(this.screenActive == this.screen.HOME_SCREEN) {
+      this.screenActive = this.screen.GAME_SCREEN;
+    } else {
+      this.bird.jumping();
+    }
   }
 
 }
