@@ -28,6 +28,20 @@ export default class Bird {
     }
   };
 
+  reset() {
+    this.sourceX = 0;
+    this.sourceY = 0;
+    this.sourceWidth = 33;
+    this.sourceHeight = 24;
+    this.x =  10;
+    this.y = 50;
+    this.width = 15;
+    this.height = 25;
+    this.velocity = 0;
+    this.gravity = 0.25;
+    this.jump = 4.6;
+  }
+
   fall() {
     this.velocity += this.gravity;
     this.y += this.velocity;

@@ -4,6 +4,7 @@ import Wallpaper from './wallpaper.js';
 
 import HomeScreen from './screen/homeScreen.js';
 import GameScreen from './screen/gameScreen.js';
+import GameLoserScreen from './screen/gameLoserScreen.js';
 
 export default class Game {
   
@@ -23,6 +24,7 @@ export default class Game {
     this.screen = {
       HOME_SCREEN: new HomeScreen(this.source, this.context, this.canvas, this.bird, this.floor, this.wallpaper),
       GAME_SCREEN: new GameScreen(this.bird, this.floor, this.wallpaper),
+      GAME_LOSER_SCREEN: new GameLoserScreen(this.source, this.context, this.canvas, this.bird, this.floor, this.wallpaper),
     }
     this.screenActive = this.screen.HOME_SCREEN;
   };
@@ -36,6 +38,8 @@ export default class Game {
     if(this.screenActive == this.screen.GAME_SCREEN) {
       if(!this.checkColisionFloor()) {
         this.bird.fall();
+      } else {
+        this.screenActive = this.screen.GAME_LOSER_SCREEN;
       }
     } 
   };
@@ -54,8 +58,11 @@ export default class Game {
   click() {
     if(this.screenActive == this.screen.HOME_SCREEN) {
       this.screenActive = this.screen.GAME_SCREEN;
-    } else {
+    } else if (this.screenActive == this.screen.GAME_SCREEN) {
       this.bird.jumping();
+    } else {
+      this.screenActive = this.screen.HOME_SCREEN;
+      this.bird.reset();
     }
   }
 
