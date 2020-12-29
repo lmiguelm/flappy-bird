@@ -2,6 +2,8 @@ import Bird from './bird.js';
 import Floor from './floor.js';
 import Wallpaper from './wallpaper.js';
 
+import HomeScreen from './screen/homeScreen.js';
+
 export default class Game {
   
   constructor(source, context, canvas) {
@@ -17,20 +19,18 @@ export default class Game {
       fail: new Audio('../audio/fail.mp3'),
     }
 
-    this.screenActive = 'initial';
+    this.screen = {
+      HomeScreen: new HomeScreen(this.source, this.context, this.canvas, this.bird, this.floor, this.wallpaper)
+    }
+
+    this.screenActive = this.screen.HomeScreen;
   };
 
-  render() {  
+  renderScreen() {  
     this.context.fillStyle = '#70c5ce';
     this.context.fillRect(0,0, 320, 480);
 
-    this.wallpaper.draw();
-    this.floor.draw();
-    this.bird.draw(); 
-    
-    if(!this.checkColisionFloor()) {
-      this.bird.fall();
-    }
+    this.screen.HomeScreen.render();
   };
 
   checkColisionFloor() {
@@ -46,8 +46,8 @@ export default class Game {
 
   click() {
     this.bird.jumping();
-
-    this.screenActive = 'playing';
+// 
+    // this.screenActive = 'playing';
 
     console.log(this.screenActive);
   }

@@ -16,7 +16,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 function loop() {
-  game.render();
+  game.renderScreen();
   requestAnimationFrame(loop);
 }
 loop();
