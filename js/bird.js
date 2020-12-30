@@ -12,7 +12,7 @@ export default class Bird {
     this.sourceY = 0;
     this.sourceWidth = 33;
     this.sourceHeight = 24;
-    this.x =  10;
+    this.x =  40;
     this.y = 50;
     this.width = 15;
     this.height = 25;
@@ -33,7 +33,7 @@ export default class Bird {
     this.sourceY = 0;
     this.sourceWidth = 33;
     this.sourceHeight = 24;
-    this.x =  10;
+    this.x =  40;
     this.y = 50;
     this.width = 15;
     this.height = 25;

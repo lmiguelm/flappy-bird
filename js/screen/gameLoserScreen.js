@@ -13,7 +13,7 @@ export default class GameLoserScreen {
     this.x = (canvas.width / 2) - 150 / 2,
     this.y = 50;
     this.width = 150;
-    this.height = 150;
+    this.height = 200;
 
     this.bird = bird;
     this.flow = flow;
