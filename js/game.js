@@ -20,7 +20,7 @@ export default class Game {
     this.obstacle = new Obstacle(this.source, this.context, this.canvas);
 
     this.audio = {
-      fail: new Audio('../audio/fail.mp3'),
+      fail: new Audio('https://lmiguelm.github.io/flappy-bird/audio/fail.mp3'),
     }
 
     this.screen = {

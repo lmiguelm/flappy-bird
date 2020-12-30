@@ -24,7 +24,7 @@ export default class Bird {
 
     //audio 
     this.audio = {
-      jump: new Audio('../audio/jump.mp3')
+      jump: new Audio('https://lmiguelm.github.io/flappy-bird/audio/jump.mp3')
     }
   };
 
