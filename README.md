@@ -1,7 +1,7 @@
 
 # 🐥 Flappy Bird
 
-![flappybird](.github/flappybird.gif)
+![flappybird](.github/flappy-bird.gif)
 
 ## 🎯 Jogue agora
 Disponível [aqui](https://lmiguelm.github.io/flappy-bird/)
